@@ -1,0 +1,191 @@
+@-moz-document url-prefix()
+	[type="password"]
+		font-size: .5rem !important
+
+fieldset
+	border: 1px solid var(--border-color)
+	padding: 1rem
+	padding-top: .77rem
+	margin: 0px
+	box-sizing: border-box
+	& > legend
+		padding: 0px 1rem
+		& + legend
+			background: var( --canvas-color )
+			float: right
+			margin-top: -1.87rem
+
+label
+	box-sizing: border-box
+	display: grid
+	position: relative
+	min-height: 2rem
+	input, textarea
+		background-color: transparent
+		background-clip: text
+		border: 1px solid var(--border-color)
+		color: var(--text-color)
+		font: var( --font-text )
+		padding: 0px 1rem
+		grid-area: 1/1/2/3
+		min-height: 100%
+		place-self: stretch
+		appearance:  none
+
+		& ~ i
+			margin: 0px 1rem
+			grid-area: 1/1/2/3
+			align-self: center
+			width: 1rem
+			height: 1rem
+			display: inline-flex
+			align-items: center
+			justify-content: center
+			transform: translateX(-1ex)
+			color: var(--extra-color)
+
+		& ~ legend
+			margin-top: -.5rem
+			margin-left: 1rem
+			background: var(--canvas-color)
+			height: 1rem
+			justify-self: left
+			padding: 0px 1ex
+			grid-area: 1/1/2/3
+			align-self: start
+
+		&:required ~ legend:after
+			content: " *"
+		& ~ dfn
+			margin-right: 1rem
+			margin-bottom: -.55rem
+			padding: 0px 1ex
+			background: var(--canvas-color)
+			justify-self: end
+			align-self: end
+			grid-area: 1/2/2/3
+
+		& ~ ins:before
+			content: '\1f6c8'
+			align-items: center
+			height: 1.1rem
+			color: var(--info-color)
+		& ~ del:before
+			content: '\2297'
+			align-items: center
+			height: 1.1rem
+		& ~ ins, & ~ del
+			cursor: pointer
+			text-decoration: none
+			grid-area: 1/2/2/3
+			justify-self: end
+			align-self: center
+			transform: translateX(.4rem)
+			background: var(--canvas-color)
+			display: inline-flex
+		& ~ del
+			margin-top: -.7rem
+			height: .7rem
+			padding: .2rem
+			transform: translateX(.5rem)
+			align-self: start
+		&[type="password"]
+			font: var( --font-text ) !important
+		&[type="color"]
+			padding: 0px
+			border: 0px solid transparent
+			border-radius: 1rem
+			height: 2rem
+		&[type="file"]
+			visibility: hidden
+			& + :not(legend, dfn, ins, del)
+				grid-area: 1/1/2/3
+				align-self: stretch
+				display: inline-flex
+				align-items: center
+				padding: 0px 1rem
+				border: 1px solid var(--border-color)
+		&[type="number"]
+			-moz-appearance: textfield
+			&::-webkit-inner-spin-button,
+			&::-webkit-outer-spin-button
+				-webkit-appearance: none;
+				margin: 0;
+		&[type="range"]
+			// https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/
+			// http://danielstern.ca/range.css/#/
+			padding: 0px
+			border: 0px solid transparent
+			background: linear-gradient(var(--border-color), var(--border-color))
+			background-size: 100% 1px
+			background-position: center
+			background-repeat: no-repeat
+			background-clip: padding-box
+		&[type="checkbox"]
+			padding: 0px
+			margin: 0px
+			max-width: 1.4em
+			min-width: 1.4em
+			max-height: 1.4em
+			min-height: 1.4em
+			align-self: center
+			&:checked
+				background: transparent linear-gradient(var(--text-color), var(--text-color)) no-repeat scroll .1em .1em / 1.1em 1.1em padding-box border-box
+		&[type="radio"]
+			padding: 0px
+			margin: 0px
+			max-width: 1.4em
+			min-width: 1.4em
+			max-height: 1.4em
+			min-height: 1.4em
+			border-radius: 50%
+			align-self: center
+			&:checked
+				background: transparent radial-gradient(var(--text-color) 60%, var(--canvas-color) 61%, var(--canvas-color)) no-repeat scroll 0% 0% / auto padding-box border-box
+		&[type="button"]
+			border-radius: 1.4rem
+			max-width: 2.4rem
+			max-height: 1.4rem
+			min-height: 1.4rem
+			padding: 0px
+			align-self: center
+			background-image: radial-gradient(var(--text-color) 50%, var(--canvas-color) 51% )
+			background-repeat: no-repeat
+			background-size: 1.5rem 1.5rem
+			background-position: right center
+			background-clip: padding-box
+			color: transparent
+			cursor: pointer
+			& + legend
+				margin: 0px 0rem 0px 3rem
+				align-self: center
+			&[type="button"]:not([value=""])
+				background-position: left center
+
+		&[type="checkbox"] + legend, &[type="radio"] + legend, &[type="switch"] + legend
+			margin: 0px 0rem 0px 1.3rem
+			align-self: center
+		&[type="checkbox"] ~ dfn, &[type="radio"] ~ dfn, &[type="checkbox"] ~ ins, &[type="radio"] ~ ins
+			grid-area: 1/1/2/2
+			margin: 0px 1em 0px 0px
+			align-self: center
+		&[type="checkbox"] ~ ins, &[type="radio"] ~ ins
+			margin-right: 0px
+
+		&:invalid:not(:placeholder-shown)
+			border-color: var(--invalid-color)
+			color: var(--invalid-color)
+			& ~ legend, & ~ dfn, & ~ i
+				color: var(--invalid-color)
+
+		&:-internal-autofill-selected
+			color: var(--text-color) !important
+	textarea
+		padding: 1rem
+		box-sizing: border-box
+		resize: vertical
+		& ~ legend
+			z-index: 1
+		& ~ dfn
+			margin-bottom: -.4rem
+			z-index: 1

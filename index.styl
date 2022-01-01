@@ -1,0 +1,21 @@
+@import './light-scheme-theme.styl'
+@import './dark-scheme-theme.styl'
+
+@media (prefers-color-scheme: light)
+	:root
+		{root-light}
+
+@media (prefers-color-scheme: dark)
+	:root
+		{root-dark}
+
+html[data-theme="dark"]
+	{root-light}
+	{root-dark}
+
+html[data-theme="light"]
+	{root-light}
+
+@import './default-tags-style.styl'
+@import './default-form-style.styl'
+@import './default-button-style.styl'

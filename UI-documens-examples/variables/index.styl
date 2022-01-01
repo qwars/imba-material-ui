@@ -1,0 +1,28 @@
+
+.variables-css-state
+	display: grid
+	grid-template-columns: auto 1fr
+	gap: 1rem 3rem
+	& > aside
+		grid-area: 1/2/6/3
+		padding: 2rem
+		display: grid
+		grid-template-rows: repeat( 4, 5rem )
+		gap: 1rem
+		ul
+			list-style: none
+			margin: 0px
+			padding: 0px
+			display: flex
+			gap: 1rem
+			&:nth-child(n+2)
+				color: var(--canvas-color)
+			&:nth-child(3) li:nth-child(4)
+				color: var(--text-color)
+			&:nth-child(4) li:nth-child(2)
+				color: rgba( 255, 255 , 255, .6 )
+			li
+				flex-grow: 1
+				display: inline-flex
+				align-items: center
+				justify-content: center

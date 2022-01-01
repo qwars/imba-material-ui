@@ -1,0 +1,27 @@
+
+.tags-css-state
+	display: grid
+	grid-template-columns: auto 1fr
+	gap: 1rem 3rem
+	legend > svg
+		width: 13rem
+	fieldset > svg
+		width: -webkit-fill-available
+		width: -moz-available
+	& > section
+		display: grid
+		grid-auto-rows: min-content minmax(max-content, 0px);
+	h3
+		cursor: pointer
+		& > ul
+			transition: height .3s, margin .3s
+		&:not(.active) + ul
+			height: 0px
+			overflow: hidden
+			margin: 0px
+	& > aside section
+		display: flex
+		gap: 1rem
+
+	& > aside > section
+		flex-direction: column
