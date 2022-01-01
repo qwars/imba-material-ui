@@ -1,11 +1,11 @@
-# imba-material-ui :: widghets
+# imba-material-ui :: authentication-firebase
 
-Branch for creating widgets
+authentication-firebase
 
-# Добавления виджетов в систему или для разработки
+# Add a widget to the system or for development
 
-`git submodule add -b {branch-name} git@github.com:qwars/imba-material-ui.git {/develop/widgets/path-branch}`
+`git submodule add -b authentication-firebase git@github.com:qwars/imba-material-ui.git {develop/widgets/authentication-firebase}`
 
-`git submodule update --init --recursive` - забрать изменения
+`git submodule update --init --recursive`
 
 
