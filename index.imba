@@ -1,5 +1,5 @@
 
-export tag Sketch
+export tag Widget
 
 	def render
 		<self>

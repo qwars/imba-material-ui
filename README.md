@@ -1,10 +1,10 @@
-# imba-material-ui :: widghets
+# imba-material-ui :: pagination-firebase
 
-Branch for creating widgets
+pagination-firebase - создает стрелки постраничного перехода относительно ссылки на коллекцию firestore
 
 # Добавления виджетов в систему или для разработки
 
-`git submodule add -b {branch-name} git@github.com:qwars/imba-material-ui.git {/develop/widgets/path-branch}`
+`git submodule add -b pagination-firebase git@github.com:qwars/imba-material-ui.git {/develop/widgets/path-branch}`
 
 `git submodule update --init --recursive` - забрать изменения
 
