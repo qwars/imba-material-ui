@@ -15,12 +15,24 @@ fieldset
 			float: right
 			margin-top: -1.87rem
 
+[contenteditable]
+	&:hover:after
+		content: '\2712\2508'
+		font-size: 1.5rem
+		color: var(--placeholder-color)
+		line-height: 0px
+		display: inline-flex
+		transform: rotate(180deg) translateY(-.5rem) translatex(-.5ex)
+	&:empty:before
+		content: attr(data-placeholder)
+
 label
 	box-sizing: border-box
 	display: grid
 	position: relative
 	min-height: 2rem
 	input, textarea
+		box-sizing: border-box
 		background-color: transparent
 		background-clip: text
 		border: 1px solid var(--border-color)
@@ -31,6 +43,7 @@ label
 		min-height: 100%
 		place-self: stretch
 		appearance:  none
+		width: 100%
 
 		& ~ i
 			margin: 0px 1rem

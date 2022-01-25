@@ -13,6 +13,7 @@ tag label < label
 		querySelector('input').css('text-indent', '2ex' ) if querySelector 'i'
 
 tag MenuUI < menu
+
 	def render
 		<self>
 			<abbr><kbd>
@@ -32,14 +33,10 @@ tag MenuUI < menu
 				<a route-to="/-ui/classes"> "Classes"
 
 tag MainUi < main
-	def mount
-		setTimeout
-			do while dom:nextElementSibling and dom:nextElementSibling:childNodes:length === 0 then dom:nextElementSibling.remove
-			167
 
 	def render
 		<self>
-			<MenuUI>
+			<MenuUI route="/-ui">
 
 			<ContentsUINavigation route="/-ui/*$">
 			<VariablesUINavigation route="/-ui/variables">
@@ -66,21 +63,8 @@ tag MainUi < main
 export tag TogglePrefersColorScheme < kbd
 	@classes = []
 
-	def setup
-		@timeout
-		let gotoui = do window:location:href = '/-ui'
-		let open-ui-page = do @timeout = setTimeout gotoui, 3000
-		let close-ui-page = do @timeout = clearTimeout @timeout
-		if process:env:NODE_ENV === 'development'
-			dom.addEventListener 'mousedown',  open-ui-page
-			dom.addEventListener 'touchstart',  open-ui-page
-			dom.addEventListener 'mouseup',  close-ui-page
-			dom.addEventListener 'touchend',  close-ui-page
-	def mount
-		Imba.mount <MainUi> if window:location:pathname.includes '-ui'
-
 	def toggleScheme e
-		document:documentElement:dataset:theme = document:documentElement:dataset:theme === 'dark' ? 'light' : 'dark' unless @timeout
+		document:documentElement:dataset:theme = document:documentElement:dataset:theme === 'dark' ? 'light' : 'dark'
 
 	def render
 		<self :tap.toggleScheme>

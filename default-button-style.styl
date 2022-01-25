@@ -12,14 +12,15 @@ button
 		height: 1rem
 		fill: currentColor
 		transform: translateX(-1ex)
-	&.active, &.valid
-		background-color: var(--active-color)
-		color: white
-		cursor: pointer
-		&:hover
-			background-color: var(--hover-color)
-		&:active
-			background-color: var(--visited-color)
+	&:not(:disabled)
+		&.active, &.valid
+			background-color: var(--active-color)
+			color: white
+			cursor: pointer
+			&:hover
+				background-color: var(--hover-color)
+			&:active
+				background-color: var(--visited-color)
 	&.error, &.invalid
 		background-color: var( --invalid-color )
 		color: white

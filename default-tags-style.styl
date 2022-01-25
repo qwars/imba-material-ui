@@ -18,6 +18,20 @@ h1, h2, h3, h4, h5, h6
 		place-self: stretch
 	& > dfn
 		grid-area: defenition
+		font: var(--font-extra)
+		[contenteditable]
+			display: inline-block
+			padding-top: 1rem
+
+del
+	cursor: pointer
+	display: inline-flex
+	align-items: center
+	justify-content: center
+	text-decoration: none
+	color: var(--invalid-color)
+	&:empty:before
+		content: '\2A09'
 
 dfn
 	color: var(--extra-color)
@@ -38,17 +52,24 @@ svg
 		pointer-events: none
 
 kbd
-	width: 2rem
-	height: 2rem
+	width: 1.5rem
+	height: 1.5rem
 	display: inline-flex
 	align-items: center
 	justify-content: center
 	cursor: pointer
 	color: var(--extra-color)
-	svg
+	&.active
+		color: var(--active-color)
+	svg, img
 		width: 100%
 		height: 100%
 		fill: currentColor
+
+abbr > svg
+	width: 100%
+	height: 100%
+	fill: currentColor
 
 i
 	display: inline-flex
@@ -85,12 +106,13 @@ hr
 	background: var( --border-color )
 	display: grid
 	grid-template-areas: "legend aside"
+	grid-template-columns: auto 1fr
 	align-items: center
 	& > *
 		border: 1px solid var(--border-color)
 		border-radius: 1rem
 		justify-self: start
-		padding: 0px 1rem
+		padding: 0px 1ex
 		margin-top: -.5rem
 		background: var(--canvas-color)
 	& > abbr
@@ -107,10 +129,52 @@ hr
 	& > legend
 		border-color: transparent
 		font-weight: 500
+		height: 1rem
+		line-height: .5rem
 	& > aside
 		grid-area: aside
 		justify-self: end
-	&[data-open]
+		transform: translateY(-.19rem)
+		& > *
+			height: 1rem
+	&[data-step]
 		cursor: pointer
-	&[data-open="false"] + *
+		&:not([data-step=''])
+			grid-template-areas: "step legend aside"
+			grid-template-columns: auto auto 1fr
+			&:before
+				content: attr(data-step)
+				grid-area: step
+				display: inline-flex
+				align-items: center
+				justify-content: center
+				height: 1rem
+				line-height: .5rem
+				padding: 0px 1ex
+				margin-right: 1ex
+				background: var(--canvas-color)
+				transform: translateY(-.5rem)
+
+	&[data-step]:not([open]) + *
 		display: none
+
+figure
+	margin: 0px
+	display: flex
+	flex-direction: column
+	justify-content: flex-end
+	figcaption
+		display: flex
+		height: 3rem
+		align-items: center
+		gap: 1ex
+		padding: 0px 1rem
+		& > abbr
+			transform: translateX(-1em)
+			&:empty
+				display: none
+		& > aside
+			&:empty
+				display: none
+		& > span
+			flex-grow: 1
