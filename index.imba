@@ -66,7 +66,7 @@ tag Enter
 				<label>
 					<input@email type="email" placeholder="E-mail" required=true >
 				<label>
-					<input@password type=( flags.contains( 'view' ) ? 'password' : 'text')
+					<input@password type=( flags.contains( 'view' ) ? 'text' : 'password')
 						placeholder="Password" required=true autocomplete='new-password'>
 					<i :tap.toogleView>
 				<button.active disabled=isDisabled :tap.changeAction( null )> "Enter"
