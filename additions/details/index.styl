@@ -1,0 +1,32 @@
+/* Styl for widget */
+
+.details-tooltype
+	display: inline-block
+	summary
+		display: flex
+		cursor: pointer
+		box-sizing: border-box
+		align-items: center
+		&.is-select
+			gap: 0px 1ex
+		&.is-select:after
+			content: '⮟'
+			line-height: 0px
+			color: var( --border-color, GrayText )
+		& + *
+			opacity: 0
+			transition: opacity .3s
+			text-decoration: none
+			position: fixed
+			display: flex
+			flex-direction: column
+			background: var( --canvas-color, Canvas )
+			box-shadow: 0px 0px 1.5rem -0.5rem var( --border-color, GrayText )
+			border-radius: .5rem
+			padding: 1rem 0px
+			top: 0px
+			left: 0px
+			box-sizing: border-box
+			z-index: -1
+	&[open] summary.is-select:after
+		content: '⮝'

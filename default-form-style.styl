@@ -190,7 +190,8 @@ label
 			color: var(--invalid-color)
 			& ~ legend, & ~ dfn, & ~ i
 				color: var(--invalid-color)
-
+		&:disabled
+			color: var(--extra-color)
 		&:-internal-autofill-selected
 			color: var(--text-color) !important
 	textarea
