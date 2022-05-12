@@ -1,0 +1,43 @@
+
+.carousel-layer
+	display: grid
+	grid-template-rows: 1fr auto
+	grid-template-columns: auto 1fr auto
+	ul
+		list-style: none
+		padding: 0px
+		margin: 0px
+		display: flex
+		grid-area: 1/2/2/3
+		place-self: stretch
+		& + ul
+			grid-area: 2/2/3/3
+		.create
+			display: flex
+			align-items: center
+			justify-content: center
+			width: 100%
+			height: 100%
+			&:before
+				content: '\2BB6'
+				font-size: 2rem
+				line-height: 0px
+		li
+			position: relative
+			align-self: stretch
+			width: 2rem
+			height: 2rem
+			& > del
+				position: absolute
+				top: 0px
+				right: 0px
+				border: 1px solid var(--extra-color, ButtonFace)
+				width: .9rem
+				height: .9rem
+				display: flex
+				align-items: center
+				justify-content: center
+				border-radius: 50%
+				&:before
+					content: '\2715'
+					transform: translate(.5px, .5px)
