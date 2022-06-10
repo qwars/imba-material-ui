@@ -62,6 +62,9 @@ export tag Widget
 
 	def render
 		<self>
-			<span .active=!!@current :tap.prevPage>
-			<span> "Page: { current }"
-			<span .active=!!@nextElementDoc :tap.nexPage>
+			unless @response then <.loading>
+			elif @response:length == 0 then <.empty-state>
+			else
+				<span .active=!!@current :tap.prevPage>
+				<span> "Page: { current }"
+				<span .active=!!@nextElementDoc :tap.nexPage>
