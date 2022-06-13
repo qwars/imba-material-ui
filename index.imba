@@ -10,7 +10,15 @@ export const MediaPrefersColorScheme = do document:documentElement:dataset:theme
 
 tag label < label
 	def mount
-		querySelector('input').css('text-indent', '2ex' ) if querySelector 'i'
+		const inpt = querySelector 'input'
+		inpt.css('text-indent', '2ex' ) if querySelector 'i'
+		if querySelector 'var + input'
+			const invar = querySelector 'var'
+			const callback = do inpt.css 'padding-right', "calc( {invar.dom:offsetWidth}px + 1ex )"
+			const observer = MutationObserver.new callback
+			observer.observe invar.dom,
+				childList: true
+			callback()
 
 tag MenuUI < menu
 

@@ -31,6 +31,16 @@ label
 	display: grid
 	position: relative
 	min-height: 2rem
+	& > var
+		cursor: pointer
+		border-left: 1px solid var(--border-color)
+		grid-area: 1/2/2/3
+		display: inline-flex
+		align-items: center
+		margin: 1ex 0px
+		padding: 0px 1ex
+		& ~ [type="number"]
+			text-align: right
 	input, textarea
 		box-sizing: border-box
 		background-color: transparent
@@ -102,6 +112,7 @@ label
 			padding: .2rem
 			transform: translateX(.5rem)
 			align-self: start
+			
 		&[type="password"]
 			font: var( --font-text ) !important
 		&[type="color"]
@@ -194,6 +205,8 @@ label
 			color: var(--extra-color)
 		&:-internal-autofill-selected
 			color: var(--text-color) !important
+		&[list]
+			padding-right: .5ex
 	textarea
 		padding: 1rem
 		box-sizing: border-box
