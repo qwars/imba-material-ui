@@ -1,0 +1,71 @@
+/* Styl for widget */
+
+.color-hue
+	display: flex
+	flex-direction: column
+	box-sizing: border-box
+	&.is-apply
+		display: grid
+		grid-template-rows: auto auto
+		grid-template-columns: auto auto
+		& > div
+			grid-area: 2/1/3/3
+	&:not(.is-apply) button
+		display: none
+	& > div
+		background: linear-gradient(90deg,red,#ff2b00,#f50,#ff8000,#fa0,#ffd500,#ff0,#d4ff00,#af0,#80ff00,#5f0,#2bff00,#0f0,#00ff2b,#0f5,#00ff80,#0fa,#00ffd5,#0ff,#00d4ff,#0af,#007fff,#05f,#002bff,#00f,#2a00ff,#50f,#7f00ff,#a0f,#d400ff,#f0f,#ff00d4,#f0a,#ff0080,#f05,#ff002b,red)
+		border-radius: .5rem
+		height: 2rem
+		position: relative
+		min-width: 18rem
+		svg
+			width: 100%
+			height: 100%
+			overflow: visible
+			cursor: pointer
+			circle
+				r: .345rem
+				cy: 50%
+				stroke-width: 2px
+				stroke: white
+	label
+		display: inline-flex
+		flex-direction: row
+		border: 0px
+		input
+			min-height: 100%
+			align-self: stretch
+			flex-grow: 1
+			padding: 0px 1rem 0px 1ex
+			font: var( --font-text )
+			box-sizing: border-box
+			color: var( --text-color )
+			appearance: none
+			-moz-appearance: textfield
+			-webkit-appearance: none
+			-ms-appearance: none
+			-o-appearance: none
+			margin: 0px
+			box-shadow: none
+			transition: background .3s, border-color .3s, color .3s
+			text-align: right
+			border: 0px solid transparent
+			max-width: 3em
+			min-width: 3em
+			padding: 0px
+			border: 0px
+			&::-webkit-outer-spin-button,
+			&::-webkit-inner-spin-button
+				-webkit-appearance: none
+				margin: 0px
+		u
+			text-decoration: none
+			border: 0px !important
+		i
+			display: inline-flex
+			align-items: center
+			justify-content: center
+			border: 0px !important
+		svg
+			width: 3rem
+			height: 1rem
