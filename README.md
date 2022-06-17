@@ -1,11 +1,34 @@
-# imba-material-ui :: widghets
+# imba-material-ui :: colors-collection
 
-Branch for creating widgets
+Templates, UI css, snippets, generators css, imba support. Site for ui styles info. 
 
-# Добавления виджетов в систему или для разработки
+## Install
 
-`git submodule add -b {branch-name} git@github.com:qwars/imba-material-ui.git {/develop/widgets/path-branch}`
+`yarn add colord`
 
-`git submodule update --init --recursive` - забрать изменения
+`git submodule add -b colors-collection git@github.com:qwars/template-ui-kid.git {path-widgets-folder/colors-collection}`
 
+`git submodule update --init --recursive --remote` - забрать изменения
 
+## Props
+    
+
+## Import
+
+```
+import Widget as ColorsCollection from './path-widgets-folder/colors-collection'
+
+... any tag ...
+
+def inputStateColor e
+    e.value
+    e.collection
+
+def render
+    <self>
+    
+        .... any ... 
+        
+        <ColorsCollection[ data ] :input.inputStateColor>
+
+```

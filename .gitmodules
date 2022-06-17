@@ -1,0 +1,4 @@
+[submodule "colors-hue"]
+	path = colors-hue
+	url = git@github.com:qwars/imba-material-ui.git
+	branch = colors-hue
