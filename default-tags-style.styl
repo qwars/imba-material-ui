@@ -59,12 +59,13 @@ kbd
 	justify-content: center
 	cursor: pointer
 	color: var(--extra-color)
-	&.active
+	&.active, &:active
 		color: var(--active-color)
-	svg, img
+	svg, img, use
 		width: 100%
 		height: 100%
 		fill: currentColor
+		pointer-events: none
 
 abbr > svg
 	width: 100%
@@ -137,8 +138,16 @@ hr
 		grid-area: aside
 		justify-self: end
 		transform: translateY(-.19rem)
+		display: inline-flex
+		align-items: center
 		& > *
 			height: 1rem
+			display: inline-flex
+			align-items: center
+			cursor: pointer
+			svg
+				width: .8rem
+				height: .8rem
 	&[data-step]
 		cursor: pointer
 		&:not([data-step=''])

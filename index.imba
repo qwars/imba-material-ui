@@ -14,10 +14,14 @@ tag label < label
 		inpt.css('text-indent', '2ex' ) if querySelector 'i'
 		if querySelector 'var + input'
 			const invar = querySelector 'var'
-			const callback = do inpt.css 'padding-right', "calc( {invar.dom:offsetWidth}px + 1ex )"
+			const callback = do
+				console.log invar.dom:offsetWidth
+				inpt.css 'padding-right', "calc( {invar.dom:offsetWidth}px + 1ex )"
 			const observer = MutationObserver.new callback
 			observer.observe invar.dom,
 				childList: true
+				subtree: true
+			setTimeout callback, 168
 			callback()
 
 tag MenuUI < menu
