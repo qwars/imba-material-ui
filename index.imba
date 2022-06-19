@@ -8,15 +8,17 @@ import Navigation as ClassesUINavigation, Article as ClassesUIArticle, Aside as 
 
 export const MediaPrefersColorScheme = do document:documentElement:dataset:theme === $1 or window.matchMedia( "(prefers-color-scheme: {$1})" ):matches
 
+const PromiseOffsetWidth = do|dom| Promise.new do|resolve|
+	const interval = setInterval(&) do
+		if dom:offsetWidth and not clearInterval interval then resolve dom:offsetWidth
+
 tag label < label
 	def mount
 		const inpt = querySelector 'input'
 		inpt.css('text-indent', '2ex' ) if querySelector 'i'
 		if querySelector 'var + input'
 			const invar = querySelector 'var'
-			const callback = do
-				console.log invar.dom:offsetWidth
-				inpt.css 'padding-right', "calc( {invar.dom:offsetWidth}px + 1ex )"
+			const callback = do PromiseOffsetWidth( invar.dom ).then do inpt.css 'padding-right', "calc( {$1}px + 1ex )"
 			const observer = MutationObserver.new callback
 			observer.observe invar.dom,
 				childList: true

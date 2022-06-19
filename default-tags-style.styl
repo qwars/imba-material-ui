@@ -150,7 +150,7 @@ hr
 				height: .8rem
 	&[data-step]
 		cursor: pointer
-		&:not([data-step=''])
+		&:not([data-step=''], [data-step='data-step'])
 			grid-template-areas: "step legend aside"
 			grid-template-columns: auto auto 1fr
 			&:before
@@ -165,7 +165,8 @@ hr
 				margin-right: 1ex
 				background: var(--canvas-color)
 				transform: translateY(-.5rem)
-
+	&[data-step]:not([open])
+		margin-bottom: 1rem
 	&[data-step]:not([open]) + *
 		display: none
 
