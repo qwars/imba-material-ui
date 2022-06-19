@@ -80,7 +80,7 @@
 				display: flex
 				align-items: center
 				justify-content: center
-				border: 1px solid ButtonFace
+				border: 1px solid var( --border-color, ButtonFace )
 				&:hover
 					opacity: 1
 					transition: opacity .3
@@ -109,7 +109,7 @@
 			r: .35rem
 			cursor: pointer
 		& > section
-			border: 1px solid GrayText
+			border: 1px solid var( --border-color, ButtonFace )
 			border-radius: .3rem
 			box-sizing: border-box
 			display: flex
@@ -129,7 +129,7 @@
 			display: flex
 			align-items: stretch
 			justify-content: space-between
-			gap: 1rem
+			gap: 1ex
 			height: 2rem
 			border: none
 			& > u
@@ -149,19 +149,18 @@
 				align-items: stretch
 				transform: translateX( -.2em )
 				i
-					margin-right: -.9em
+					margin-right: -1em
 				u
 					margin-left: -1.2em
 				input
 					background: transparent
-					border: 1px solid GrayText
+					border: 1px solid var( --border-color, ButtonFace )
 					text-align: right
 					padding: 0px 1em
 					font: normal normal 300 normal 16px / normal -apple-system, "Segoe UI", system-ui, Roboto, "Noto Sans", "Helvetica Neue", sans-serfi
-					border-radius: .3rem
 					width: 0px
 					flex-grow: 1
-					min-width: 4rem
+					width: 4.5rem
 					box-sizing: border-box
 					&::-webkit-outer-spin-button,
 					&::-webkit-inner-spin-button

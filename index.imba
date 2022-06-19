@@ -117,7 +117,7 @@ tag ColorInputs < section
 			<label>
 				<i> "H"
 				<input[ data:h ] type="number" step=1 min=0 max=360 disabled=!parent.liveHue>
-				<u> "°"
+				<u html='°&nbsp;'>
 			<label>
 				<i> "S"
 				<input[ data:s ] type="number" step=1 min=0 max=100>
@@ -313,8 +313,8 @@ export tag Widget
 						:tap.selectHueColor( item.toHsv:h )
 						css:backgroundColor=item.toRgbString>
 						if idx > 0 then <del :tap.stop.deleteHueColor( item )> <svg:svg> <svg:use href="{ ISymbol }#plus"> unless @isHue
-				<li> <details@colorshue.Plugin>
-					<summary> <svg:svg> <svg:use href="{ ISymbol }#plus"> unless @isHue
+				unless @isHue then <li> <details@colorshue.Plugin>
+					<summary> <svg:svg> <svg:use href="{ ISymbol }#plus">
 					<s> <ColorsHue[ @current.toRgbString ] :apply.addHueColor>
 				<li css:flexGrow=1 css:border-color="transparent">
 				<li :tap.toggleGrayCollection .active=@graycollection css:backgroundColor="gray">
