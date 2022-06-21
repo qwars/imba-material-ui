@@ -11,7 +11,7 @@ const ChangeElementPosition = do|el|
 		const transitionY = rect:y + rect:height + bounding:height - window:innerHeight
 		layer.dom:style:top = "{ rect:y  }px"
 		layer.dom:style:left = "{ rect:x }px"
-		layer.dom:style:transform = "translateX(-{ Number transitionX > 0 and ( transitionX + rem ) }px) translateY({ Number transitionY > 0 ? -bounding:height : rect:height }px) translateY({ transitionY > 0 ? '-.5' : '.5'  }rem) "
+		layer.dom:style:transform = "translateX(-{ Number transitionX > 0 and transitionX  }px) translateY({ Number transitionY > 0 ? -bounding:height : rect:height }px) translateY({ transitionY > 0 ? '-.5' : '.5'  }rem) "
 		layer.dom:style:opacity = 1
 		layer.dom:style:zIndex = 1000
 
