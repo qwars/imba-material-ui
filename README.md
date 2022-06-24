@@ -9,3 +9,6 @@ authentication-firebase
 `git submodule update --init --recursive`
 
 
+# TODO
+
+1. [] После нужно вернуться на форму входа с заполненым емаил 
