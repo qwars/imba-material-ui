@@ -15,9 +15,8 @@ const PromiseOffsetWidth = do|dom| Promise.new do|resolve|
 tag label < label
 	def mount
 		const inpt = querySelector 'input'
-		inpt.css('text-indent', '2ex' ) if querySelector 'input ~ i'
-		if inpt.parent.querySelector 'var + input'
-			console.log inpt if inpt.disabled
+		inpt.css('text-indent', '2.5ex' ) if querySelector 'input ~ i'
+		if querySelector 'var + input'
 			const invar = querySelector 'var'
 			const callback = do PromiseOffsetWidth( invar.dom ).then do inpt.css 'padding-right', "calc( {$1}px + 1ex )"
 			const observer = MutationObserver.new callback

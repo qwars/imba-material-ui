@@ -31,7 +31,8 @@ del
 	text-decoration: none
 	color: var(--invalid-color)
 	&:empty:before
-		content: '\2715'
+		content: '×'
+		font-size: .9rem
 
 dfn
 	color: var(--extra-color)
@@ -114,7 +115,7 @@ hr
 		border-radius: 1rem
 		justify-self: start
 		padding: 0px 1ex
-		margin-top: -.5rem
+		margin-top: -1rem
 		background: var(--canvas-color)
 	& > abbr
 		float: left
@@ -149,7 +150,7 @@ hr
 				height: .8rem
 	&[data-step]
 		cursor: pointer
-		&:not([data-step=''], [data-step='data-step'])
+		&:not([data-step='']), &:not([data-step='data-step'])
 			grid-template-areas: "step legend aside"
 			grid-template-columns: auto auto 1fr
 			&:before
@@ -174,6 +175,28 @@ figure
 	display: flex
 	flex-direction: column
 	justify-content: flex-end
+	& > del
+		height: 0px
+		width: 0px
+		align-self: end
+		line-height: 0px
+		opacity: 0
+		transition: opacity .3s
+		&:before
+			min-width: .8rem
+			height: .8rem
+			box-sizing: border-box
+			background: var(--canvas-color)
+			border: 1px solid var(--border-color)
+			display: flex
+			align-items: center
+			justify-content: center
+			border-radius: 1rem
+	&:hover > del
+		opacity: 1
+		transition: opacity .3s
+	& > section
+		flex-grow: 1
 	figcaption
 		display: flex
 		height: 3rem

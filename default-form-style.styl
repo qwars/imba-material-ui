@@ -25,6 +25,7 @@ fieldset
 		transform: rotate(180deg) translateY(-.5rem) translatex(-.5ex)
 	&:empty:before
 		content: attr(data-placeholder)
+		color: var(--extra-color)
 
 label
 	box-sizing: border-box
@@ -50,7 +51,7 @@ label
 		background-color: transparent
 		background-clip: text
 		border: 1px solid var(--border-color)
-		color: var(--text-color)
+		color: var( --text-color )
 		font: var( --font-text )
 		padding: 0px 1rem
 		grid-area: 1/1/2/3
@@ -157,8 +158,8 @@ label
 			max-height: 1.4em
 			min-height: 1.4em
 			align-self: center
-			&:checked
-				background: transparent linear-gradient(var(--text-color), var(--text-color)) no-repeat scroll .1em .1em / 1.1em 1.1em padding-box border-box
+			background: transparent linear-gradient(var(--text-color), var(--text-color)) no-repeat scroll .1em .1em / 1.1em 1.1em padding-box border-box
+				
 		&[type="radio"]
 			padding: 0px
 			margin: 0px
@@ -170,6 +171,24 @@ label
 			align-self: center
 			&:checked
 				background: transparent radial-gradient(var(--text-color) 60%, var(--canvas-color) 61%, var(--canvas-color)) no-repeat scroll 0% 0% / auto padding-box border-box
+		&[role="switch"]
+			user-select: none
+			padding: 0px
+			margin: 0px
+			max-width: 2em
+			min-width: 2em
+			max-height: 1.1em
+			min-height: 1.1em
+			align-self: center
+			caret-color: transparent
+			color: transparent
+			cursor: pointer
+			border-radius: 1.4em
+			background: transparent radial-gradient(var(--border-color) 60%, var(--canvas-color) 61%, var(--canvas-color)) no-repeat scroll 100% 50% / 1em padding-box border-box
+			transition: background-position .3s
+			&:checked
+				background: var(--checked-color) radial-gradient(var(--canvas-color) 60%, var(--checked-color) 61%, var(--checked-color)) no-repeat scroll left / 1em padding-box border-box;
+
 		&[type="button"]
 			border-radius: 1.4rem
 			max-width: 2.4rem
