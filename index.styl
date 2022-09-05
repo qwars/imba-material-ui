@@ -3,6 +3,33 @@
 	display: grid
 	grid-template-rows: 1fr auto
 	grid-template-columns: auto 1fr auto
+	position: relative
+	dialog
+		position: absolute
+		flex-direction: column
+		gap: 1rem
+		&[open]
+			display: flex
+		img
+			grid-area: 1/1/2/3
+			min-height: inherit
+			background: var( --disabled-color )
+			padding: 0px !important
+			max-width: 100%
+		& > div
+			display: flex
+			justify-content: space-between
+		button
+			height: 2rem
+		label:before
+			content: '\26F5'
+			grid-area: 1/1/2/3
+			place-self: center
+			font-size: 3rem
+		label.preload:before
+			place-self: end
+			font-size: 1rem
+			transition: margin-right .3s
 	ul
 		list-style: none
 		padding: 0px
@@ -10,10 +37,12 @@
 		display: flex
 		grid-area: 1/2/2/3
 		place-self: stretch
+		overflow: hidden
 		& + ul
 			grid-area: 2/2/3/3
 		.create
 			display: flex
+			place-self: stretch
 			align-items: center
 			justify-content: center
 			cursor: pointer
@@ -22,13 +51,29 @@
 			transition: opacity .3s
 			&:hover
 				opacity: .9
-			&:before
+			&:empty:before
 				content: '\2BB6'
 				font-size: 2rem
 				line-height: 1.5rem
 		li
 			position: relative
 			align-self: stretch
+			width: 100%
+			display: grid
+			grid-template-rows: 1fr
+			grid-template-columns: 1fr
+			min-width: 100%
+			background-repeat: no-repeat
+			background-position: center
+			background-size: auto 100%
+			& > *
+				grid-area: 1/1/2/3
+				align-self: stretch
+			& > input[type="file"]
+				opacity: 0
+				place-self: stretch
+				cursor: pointer
+				place-self: center
 			& > del
 				position: absolute
 				top: 0px
