@@ -24,6 +24,17 @@ button
 	&.error, &.invalid
 		background-color: var( --invalid-color )
 		color: white
+	&.cancel
+		background-color: var( --checked-color )
+		color: white
+		cursor: pointer
 	&.warning, &.caution
 		background-color: var( --warning-color )
 		color: white
+	&.loading
+		width: auto
+		&:before
+			font-size: 1.5rem
+			line-height: 1.1rem
+			margin: 0px .5ex 0px -.3ex
+			opacity: 1
