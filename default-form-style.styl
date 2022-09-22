@@ -158,8 +158,10 @@ label
 			max-height: 1.4em
 			min-height: 1.4em
 			align-self: center
-			background: transparent linear-gradient(var(--text-color), var(--text-color)) no-repeat scroll .1em .1em / 1.1em 1.1em padding-box border-box
-				
+			cursor: pointer
+			&:checked
+				background: transparent linear-gradient(var(--checked-color), var(--checked-color)) no-repeat scroll .15em .15em / .9em .9em padding-box border-box
+
 		&[type="radio"]
 			padding: 0px
 			margin: 0px
@@ -169,8 +171,10 @@ label
 			min-height: 1.4em
 			border-radius: 50%
 			align-self: center
+			cursor: pointer
 			&:checked
-				background: transparent radial-gradient(var(--text-color) 60%, var(--canvas-color) 61%, var(--canvas-color)) no-repeat scroll 0% 0% / auto padding-box border-box
+				background: transparent radial-gradient(var(--checked-color) 50%, var(--canvas-color) 50%, var(--canvas-color)) no-repeat scroll 0% 0% / auto padding-box border-box
+
 		&[role="switch"]
 			user-select: none
 			padding: 0px
@@ -212,6 +216,11 @@ label
 		&[type="checkbox"] + legend, &[type="radio"] + legend, &[type="switch"] + legend
 			margin: 0px 0rem 0px 1.3rem
 			align-self: center
+		&[type="checkbox"] + span, &[type="radio"] + span, &[type="switch"] + span
+			grid-area: 1/1/2/2
+			margin: 0px 0rem 0px 1.3rem
+			align-self: center
+			justify-self: start
 		&[type="checkbox"] ~ dfn, &[type="radio"] ~ dfn, &[type="checkbox"] ~ ins, &[type="radio"] ~ ins
 			grid-area: 1/1/2/2
 			margin: 0px 1em 0px 0px

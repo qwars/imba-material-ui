@@ -1,4 +1,8 @@
 
+:empty[data-empty]:before
+	content: attr(data-empty)
+
+
 h1, h2
 	font-size: 1.5em
 h3, h2
@@ -233,7 +237,30 @@ dialog[open]
 	max-height: 93vh
 	min-height: 17vh
 	box-sizing: border-box
+	padding: 1rem
+	&.full-screen
+		min-width: 90vw
+		max-width: 90vw
+		max-height: 90vh
+		min-height: 90vh
+		backdrop-filter: blur(3px)
+		background: var(--canvas-color-75)
 	& > del
 		position: absolute
 		right: .4rem
 		top: 0px
+	& > .loading
+		position: absolute
+		top: 1rem
+		right:1rem
+		bottom: 1rem
+		left: 1rem
+		margin: auto
+	& > abbr
+		color: var(--extra-color)
+		display: block
+		text-align: center
+		padding: 2rem
+		svg
+			width: 5rem
+			height: 5rem

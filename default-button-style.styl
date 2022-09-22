@@ -21,16 +21,18 @@ button
 				background-color: var(--hover-color)
 			&:active
 				background-color: var(--visited-color)
-	&.error, &.invalid
-		background-color: var( --invalid-color )
-		color: white
-	&.cancel
-		background-color: var( --checked-color )
-		color: white
-		cursor: pointer
-	&.warning, &.caution
-		background-color: var( --warning-color )
-		color: white
+		&.error, &.invalid
+			background-color: var( --invalid-color )
+			color: white
+		&.checked
+			background-color: var( --checked-color )
+			color: white
+			cursor: pointer
+			&:hover
+				background-color: var( --focus-color )
+		&.warning, &.caution
+			background-color: var( --warning-color )
+			color: white
 	&.loading
 		width: auto
 		&:before
