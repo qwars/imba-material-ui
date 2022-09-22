@@ -1,9 +1,14 @@
 
+@keyframes spinCarouselLayerLoading
+	50%
+		transform: rotateY( 90deg )
+
 .carousel-layer
 	display: grid
 	grid-template-rows: 1fr auto
 	grid-template-columns: auto 1fr auto
 	position: relative
+	gap: 1rem 0px
 	dialog
 		position: absolute
 		flex-direction: column
@@ -30,6 +35,34 @@
 			place-self: end
 			font-size: 1rem
 			transition: margin-right .3s
+	& > span
+		width: 2rem
+		height: 2rem
+		font-size: 1rem
+		transition: opacity .3s
+		background: var( --canvas-color, Canvas )
+		color: var(--extra-color, ButtonFace)
+		box-shadow: 0 0 .4rem .05rem var(--extra-color, ButtonFace)
+		border-radius: .3rem
+		display: inline-flex
+		align-items: center
+		justify-content: center
+		cursor: pointer
+		align-self: center
+		grid-area: 1/2/2/3
+		position: absolute
+		margin: 0px .5rem
+		z-index: 1
+		&:not(.active)
+			display: none
+		&:hover
+			opacity: .75 !important
+		&:before
+			content: '\2770'
+		& ~ span
+			right: 0px
+			&:before
+				content: '\2771'
 	ul
 		list-style: none
 		padding: 0px
@@ -38,8 +71,33 @@
 		grid-area: 1/2/2/3
 		place-self: stretch
 		overflow: hidden
+		&.loading
+			font-size: 3rem
+			width: 3rem
+			height: 3rem
+			&:before
+				content: '\2744'
+				opacity: .1
+				animation: spinCarouselLayerLoading 3s linear infinite
 		& + ul
 			grid-area: 2/2/3/3
+			display: flex
+			align-items: center
+			justify-content: center
+			gap: 1ex
+			li
+				width: 1ex
+				height: 1ex
+				min-width: 1ex
+				border-radius: 1ex
+				opacity: .3
+				background: var(--extra-color, ButtonFace)
+				cursor: pointer
+				transition: opacity .3s
+				&.active
+					opacity: .5
+				&:not(.active):hover
+					opacity: .75
 		.create
 			display: flex
 			place-self: stretch
@@ -76,12 +134,23 @@
 				place-self: center
 			& > del
 				position: absolute
-				top: 0px
-				right: 0px
-				opacity: .75
+				top: .5rem
+				right: .5rem
 				transition: opacity .3s
+				width: 2rem
+				height: 2rem
+				background: var( --canvas-color, Canvas )
+				color: var(--extra-color, ButtonFace)
+				box-shadow: 0 0 .4rem .05rem var(--extra-color, ButtonFace)
+				border-radius: .3rem
+				z-index: 1
 				&:hover
-					opacity: 1
+					opacity: .75
 
 				&:before
-					content: '\2297'
+					content: '\274C'
+	& > span, li > del
+		opacity: 0
+	&:hover
+		& > span, li > del
+			opacity: .3

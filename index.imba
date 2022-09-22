@@ -11,6 +11,7 @@ const PreloadFiles =  do|files| Promise.new do|resolve|
 
 export tag Widget < section
 	prop settings default: {}
+	prop current default: 0
 
 	@classes = ['carousel-layer']
 
@@ -18,9 +19,8 @@ export tag Widget < section
 		@preloadCSS = document:styleSheets[0]:cssRules[ document:styleSheets[0].insertRule '.carousel-layer dialog label.preload:before { margin-right: 0% }' ]
 
 	def createNewElement
-		unless @settings:ratio then trigger 'oncreate'
-		elif @image then closeDialog trigger 'oncreate', @image
-		else @open-dialog = true
+		if @settings:ratio and not @image then @open-dialog = true
+		else closeDialog @settings:upload @image
 
 	def closeDialog
 		unless @open-dialog = false then @image = ''
@@ -31,28 +31,34 @@ export tag Widget < section
 			.finally do render e.target.value = @preload = ''
 
 	def deleteElement idx
-		trigger 'ondelete', data.splice idx
+		@settings:remove data.splice idx, 1
 
 	def prevLayer e
-		console.log e
+		scrollIdx @current - 1
 
-	def nextLayer e
-		console.log e
+	def nextLayer
+		scrollIdx @current + 1
+
+	def scrollIdx idx
+		@current = idx
+		@scrollLayer.dom.scroll
+			left: @scrollLayer.dom:offsetWidth * @current
+			behavior:'smooth'
 
 	def render
 		<self>
-			<span :tap.prevLayer> if @settings:arrow
-			<ul>
+			<span :tap.prevLayer .active=@current> if @settings:control
+			<ul@scrollLayer .loading=!data>
 				for item, idx in data when !!item
 					<li css:backgroundImage="url({item})">
-						<del :tap.deleteElement(idx)> if @settings:control
-				if @settings:control then <li>
+						<del :tap.silence.deleteElement(idx)> if @settings:remove
+				if @settings:upload and data isa Array then <li>
 					<abbr.create :tap.createNewElement> @settings:icon
-					<input@file type="file"> unless @settings:ratio
-			if @settings:control or @settings:dots then <ul .dots=@settings:dots .control=@settings:control> for item in data when !!item
-				<li>
-			<span :tap.nextLayer> if @settings:arrow
-			if @settings:ratio then <dialog open=@open-dialog>
+					<input@file type="file" :change.preloadImage> unless @settings:ratio
+			if @settings:dots then <ul .dots=@settings:dots > for item, idx in data when !!item
+				<li .active=( @current === idx ) :tap.scrollIdx( idx )>
+			<span :tap.nextLayer .active=( data and data:length > 0 and @current !== data:length - Number !@settings:upload )> if @settings:control
+			if @settings:ratio and @settings:upload then <dialog open=@open-dialog>
 				<label .preload=@preload>
 					<input type="file" accept="image/*" :change.preloadImage>
 					<img src="{ @image or '' }" css:aspect-ratio=@settings:ratio>
